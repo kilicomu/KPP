@@ -58,8 +58,7 @@ OBJS  = \
 kpp:    $(OBJS)
 	@echo "  "$(CC) $(CC_FLAGS) $(CFLAGS) $(OBJS) -L$(FLEX_LIB_DIR) -lfl -o kpp
 	@$(CC) $(CC_FLAGS) $(CFLAGS) $(OBJS) -L$(FLEX_LIB_DIR) -lfl -o kpp
-	@mkdir -p ../bin
-	@mv kpp ../bin/kpp
+	@mv kpp ../bin
 
 clean:  
 	@rm -f *~ *.o cflags 
@@ -69,7 +68,7 @@ maintainer-clean: clean
 
 lex.yy.c: scan.l scan.h
 	@echo "  "$(FLEX) scan.l
-	@$(FLEX) -olex.yy.c scan.l 
+	@$(FLEX) -o lex.yy.c scan.l 
 
 y.tab.c: scan.y scan.h
 	@echo "  "$(BISON) scan.y
