@@ -1515,7 +1515,10 @@ int Djv_isElm;
                iHess_k[ Hess_NZ ] = i2;
 	       Hess_NZ++;
 	       }
-
+            else {
+              free(sum -> elm);
+              free(sum);
+            }
     }  /* for i, i1, i2 */
 
 
@@ -2011,6 +2014,9 @@ int dim;
         for( j = ibgn; j < iend; j++ )
           sum = Sub( sum, Mul( Elm( JVS, j ), Elm( X, icol[j] ) ) );
         Assign( Elm( X, i ), sum );
+      } else {
+        free(sum -> elm);
+        free(sum);
       }
     }
   }
